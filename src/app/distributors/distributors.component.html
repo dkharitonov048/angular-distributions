@@ -1,0 +1,53 @@
+<div class="action-panel">
+    <a mat-raised-button routerLink="add">Create</a>
+</div>
+<div>
+    <table mat-table [dataSource]="distributors" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.number}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tin">
+            <th mat-header-cell *matHeaderCellDef> TIN </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.tin}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="kpp">
+            <th mat-header-cell *matHeaderCellDef> KPP </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.kpp}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="externalId">
+            <th mat-header-cell *matHeaderCellDef> SAP code </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.externalId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="legalAddress">
+            <th mat-header-cell *matHeaderCellDef> legalAddress </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.legalAddress}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actualAddress">
+            <th mat-header-cell *matHeaderCellDef> actualAddress </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.actualAddress}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="formOfActivity">
+            <th mat-header-cell *matHeaderCellDef> formOfActivity </th>
+            <td mat-cell *matCellDef="let distributor"> {{distributor.formOfActivity?.value}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
+    </mat-paginator>
+</div>
+
